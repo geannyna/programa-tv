@@ -2,9 +2,10 @@
 <div class="swiper">
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
-    <!-- Slides -->
+    <!-- Slides 
     <div
-      *ngFor="let movie of movies"
+         
+        *ngFor="let movie of movies"
       class="swiper-slide"      
       [ngStyle]="{
         'background-size': 'cover',
@@ -14,18 +15,18 @@
     >
       <div class="movie-description">
         <h3>{{ movie.title }}  <button class="btn btn-outline-light btn-sm" (click)="onMovieClick(movie)">Details</button></h3>
-        <p>{{ movie.overview | slice: 0:130 }}...</p>
+        <p>{{ movie.overview | slice: 0:130 }}...</p> -->
        
       </div>
     </div>
 
     ...
-  </div>
+  <!-- </div>
   <!-- If we need pagination -->
-  <div class="swiper-pagination"></div>
+  <!--<div class="swiper-pagination"></div>
 
   <!-- If we need navigation buttons -->
-  <div (click)="onSlidePrev()" class="swiper-button-prev"></div>
+ <!-- <div (click)="onSlidePrev()" class="swiper-button-prev"></div>
   <div (click)="onSlideNext()" class="swiper-button-next"></div>
-</div>
+</div> -->
  
