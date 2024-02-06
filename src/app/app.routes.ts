@@ -5,7 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProgramaComponent } from './pages/programa/programa.component';
 import { BuscarComponent } from './pages/buscar/buscar.component';
 
-const routes:Routes=[
+export const routes:Routes=[
 
   {path: 'home', component: HomeComponent},
   {path: 'buscar/:texto', component: BuscarComponent},

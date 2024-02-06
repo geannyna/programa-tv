@@ -12,14 +12,13 @@ import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
-    // HomeComponent,
-    // PeliculaComponent,
+    HomeComponent
+    // ProgramaComponent,
     // BuscarComponent
   ],
   imports: [
     CommonModule,
-    ComponentsModule,
-    PipesModule,
+    PipesModule
     // NgbRatingModule
   
   ]

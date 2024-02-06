@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Movie } from '../../interfaces/peliculas.interface';
+import { Movie } from '../../interfaces/programas.interface';
 import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
-
+//import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-programas-poster-grid',
   templateUrl: './programas-poster-grid.component.html',
@@ -23,7 +23,6 @@ export class ProgramasPosterGridComponent implements OnInit {
   }
 
   onMovieClick(movie:Movie){
-   // this.router.navigate(['detallePelicula', movie.id]);
-    this.router.navigate(['/pelicula', movie.id])
+    this.router.navigate(['/programa', movie.id])
   }
 }

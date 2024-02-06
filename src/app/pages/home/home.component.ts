@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
-import { Movie } from '../../interfaces/peliculas.interface';
-import { PeliculasService } from '../../services/peliculas.service';
+import { Movie } from '../../interfaces/programas.interface';
+import { ProgramasService } from '../../services/programas.service';
 
 
 @Component({
@@ -20,8 +20,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     const max = (document.documentElement.scrollHeight || document.body.scrollHeight);
     
     if (pos > max) {
-      if (this.peliculasSvc.cargando) {return;}
-      this.peliculasSvc.getPeliculas().subscribe(movies=>{
+      if (this.programasSvc.cargando) {return;}
+      this.programasSvc.getProgramas().subscribe(movies=>{
 
         this.movies.push(...movies);
 
@@ -32,14 +32,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     //console.log({pos, max})
 
   }
-
-  constructor(private peliculasSvc:PeliculasService){
-  }
-
+  constructor(private programasSvc : ProgramasService ) {}
 
   ngOnInit(): void {
     
-    this.peliculasSvc.getPeliculas().subscribe(movies=>{
+    this.programasSvc.getProgramas().subscribe(movies=>{
         
       this.movies = movies;
       this.moviesSlideShow = movies;
@@ -47,7 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.peliculasSvc.resetPeliculaPage();
+    this.programasSvc.resetProgramaPage();
   }
 
 }
