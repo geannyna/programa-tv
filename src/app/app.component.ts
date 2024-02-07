@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { ComponentsModule } from "./components/components.module";
-
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { NavbarComponent } from './components/navbar/navbar.component';
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.css',
     standalone: true,
-    imports: [ComponentsModule]
+  imports: [ CommonModule, RouterOutlet, NavbarComponent],
+    templateUrl: './app.component.html',
+    //template:`<app-navbar></app-navbar>`,
+    styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'programasTV';

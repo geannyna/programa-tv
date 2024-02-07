@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieDetails } from '../../interfaces/programa.interface';
-import { ProgramasService } from '../../interfaces/programas.interface';
+import { ProgramasService } from '../../services/programas.service';
 import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
 import {Location} from '@angular/common'
-import { Cast} from '../../interfaces/credits.interface';
 import { combineLatest } from 'rxjs';
 
 @Component({
@@ -15,7 +14,7 @@ import { combineLatest } from 'rxjs';
 export class ProgramaComponent implements OnInit {
 
   programa?:MovieDetails;
-  cast:Cast[]=[];
+
 
   constructor(config: NgbRatingConfig, private activatedRoute: ActivatedRoute, private programasSvc:ProgramasService, private location:Location, private router: Router) { 
      // customize default values of ratings used by this component tree
@@ -27,9 +26,8 @@ export class ProgramaComponent implements OnInit {
     const {id} = this.activatedRoute.snapshot.params;
     
     combineLatest([
-      this.programasSvc.getPeliculaDetalle(id),
-      this.programasSvc.getCast(id)  
-    ]).subscribe(([movie, cast])=>{
+      this.programasSvc.getProgramaDetalle(id), 
+    ]).subscribe(([movie])=>{
 
       if (!movie) {
         this.router.navigateByUrl('/');
@@ -37,22 +35,9 @@ export class ProgramaComponent implements OnInit {
         }
 
         this.programa=movie;
-        this.cast=cast;
+       
     })
 
-  /*   this.peliculasSvc.getPeliculaDetalle(id).subscribe(movie=>{
-      //console.log(movie)
-      if (!movie) {
-      this.router.navigateByUrl('/');
-        return;
-      }
-      this.pelicula=movie;        
-    });
-    
-    this.peliculasSvc.getCast(id).subscribe(cast=>{
-      this.cast=cast
-      console.log(cast)
-    }) */
   }
 
   regresar(){

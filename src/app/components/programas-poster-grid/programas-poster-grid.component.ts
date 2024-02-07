@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Movie } from '../../interfaces/programas.interface';
 import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
-//import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-programas-poster-grid',
   templateUrl: './programas-poster-grid.component.html',

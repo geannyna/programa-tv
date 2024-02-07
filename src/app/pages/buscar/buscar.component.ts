@@ -16,17 +16,12 @@ export class BuscarComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private programasSvc:ProgramasService) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params=>{
+    this.activatedRoute.params.subscribe(params => {
+      this.texto = params['texto'];
 
-      //console.log(params['texto']);
-      this.texto=params['texto'];
-
-      
-      this.programasSvc.buscarProgramas(params['texto']).subscribe((movies: Movie[])=>{
-        this.movies=movies;
-      })
-       
+      this.programasSvc.buscarProgramas(params['texto']).subscribe((movies: Movie[]) => {
+        this.movies = movies;
+      });
     });
   }
-
 }

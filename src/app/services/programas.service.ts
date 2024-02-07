@@ -11,7 +11,7 @@ import { Cast, Credits } from '../interfaces/credits.interface';
 })
 export class ProgramasService {
   private baseURL:string ='https://api.themoviedb.org/3';
-  private carteleraPage = 1;
+  private listPage = 1;
   public cargando=false;
 
   constructor(private http:HttpClient) { }
@@ -20,7 +20,7 @@ export class ProgramasService {
     return{
       api_key:'45e04ff7e7fe8ba1abcea37fe5186fc3',
       language:'es-ES',
-      page:this.carteleraPage.toString()
+      page:this.listPage.toString()
     }
   }
 
@@ -32,10 +32,10 @@ export class ProgramasService {
 
     this.cargando=true;
 
-    return this.http.get<ProgramasResponse>(`${this.baseURL}/movie/now_playing`,{params:this.params}).pipe(
+    return this.http.get<ProgramasResponse>(`${this.baseURL}/trending/tv/day?language=es-ES`,{params:this.params}).pipe(
       map((res)=>res.results),
       tap(()=>{
-        this.carteleraPage+=1;
+        this.listPage+=1;
         this.cargando=false;
       })
     );
@@ -43,11 +43,12 @@ export class ProgramasService {
 
 buscarProgramas(texto:string):Observable<Movie[]>{
 
-/*   https://api.themoviedb.org/3/search/movie?api_key=13ee2b3b1810d881d34a3d2f4351f448&language=es-ES&page=1&include_adult=false
+/*   https://api.themoviedb.org/3/trending/tv/day?language=es-ES
+     https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=es-ES&page=1&sort_by=popularity.desc
  */
   const params = {...this.params, page:1, query:texto};
 
-  return this.http.get<ProgramasResponse>(`${this.baseURL}/search/movie`,{
+  return this.http.get<ProgramasResponse>(`${this.baseURL}/search/program`,{
     params
   }).pipe(
     map(res=>res.results)
@@ -58,7 +59,7 @@ buscarProgramas(texto:string):Observable<Movie[]>{
 
 getProgramaDetalle(id:string){
 
-  return this.http.get< MovieDetails>(`${this.baseURL}/movie/${id}`,{
+  return this.http.get< MovieDetails>(`${this.baseURL}/program/${id}`,{
     params:this.params
   }).pipe(
 
@@ -68,18 +69,8 @@ getProgramaDetalle(id:string){
 
 }
 
-getCast(id:string):Observable<Cast[]>{
-
-  return this.http.get<Credits>(`${this.baseURL}/movie/${id}/credits`,{
-    params:this.params
-  }).pipe(
-    map(res=> res.cast),
-    catchError(err => of([]))
-  );
-
-}
   resetProgramaPage(){
-  this.carteleraPage =1;
+  this.listPage =1;
 
   }
 }

@@ -1,8 +1,8 @@
 import { bootstrapApplication, provideClientHydration } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { AppNavbar } from '../navbar/navbar.component';
+import { RouterModule } from  '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
 import { SlideShowComponent } from './slide-show/slide-show.component';
 import { ProgramasPosterGridComponent } from './programas-poster-grid/programas-poster-grid.component';
 import { PipesModule } from '../pipes/pipes.module';
@@ -13,16 +13,16 @@ import { CastSlideShowComponent } from './cast-slide-show/cast-slide-show.compon
 
 @NgModule({
   declarations: [
-    AppNavbar,
-    ProgramasPosterGridComponent
+    // AppNavbar,
+    // ProgramasPosterGridComponent
     // SlideShowComponent,
     // ProgramasPosterGridComponent,
     // CastSlideShowComponent
   ],
   exports: [
-    AppNavbar,
-    ProgramasPosterGridComponent
-    
+    // AppNavbar,
+    // ProgramasPosterGridComponent
+
     // SlideShowComponent,
     // CastSlideShowComponent
   ],

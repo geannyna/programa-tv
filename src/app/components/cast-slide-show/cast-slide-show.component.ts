@@ -33,7 +33,6 @@ export class CastSlideShowComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-    //console.log(this.cast)
   }
 
 
