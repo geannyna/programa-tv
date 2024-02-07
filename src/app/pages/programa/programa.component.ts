@@ -5,9 +5,12 @@ import { ProgramasService } from '../../services/programas.service';
 import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
 import {Location} from '@angular/common'
 import { combineLatest } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-programa',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './programa.component.html',
   styleUrls: ['./programa.component.css']
 })

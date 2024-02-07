@@ -2,12 +2,13 @@ import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Movie } from '../../interfaces/programas.interface';
 import { ProgramasService } from '../../services/programas.service';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [ CommonModule, NavbarComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -25,17 +26,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (pos > max) {
       if (this.programasSvc.cargando) {return;}
       this.programasSvc.getProgramas().subscribe(movies=>{
-
         this.movies.push(...movies);
-
-
+        //console.log(movies)
       })
     }
-    
-    //console.log({pos, max})
-
+   
   }
-  constructor(private programasSvc : ProgramasService ) {}
+  constructor(private programasSvc:ProgramasService ) {}
 
   ngOnInit(): void {
     
@@ -43,6 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         
       this.movies = movies;
       this.moviesSlideShow = movies;
+      console.log(movies);
     })
   }
 

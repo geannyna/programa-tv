@@ -2,17 +2,17 @@
   <div class="col-md-6">
     <img
       class="img-thumbnail"
-      [src]="programa?.original_title"
-      [alt]="programa?.popularity"
+      [src]="programa.poster_path"
+      [alt]="programa.title"
     />
   </div>
   <div class="col-md-6 mt-2">
-    <h3>{{ programa?.title }}</h3>
+    <h3>{{ programa.title }}</h3>
 
     <div class="row mt-3">
       <h3>Sinopsis:</h3>
       <div class="col text-white text-justify-content">
-        {{ programa?.original_title }}
+        {{ programa.original_title }}
       </div>
     </div>
 
@@ -26,9 +26,3 @@
   </div>
 </div>
 
-<hr>
-<div class="row mt-5 mb-3" *ngIf="cast.length > 0">
-  <!-- <div class="col">
-    <app-cast-slide-show [cast]="cast"></app-cast-slide-show>
-  </div> -->
-</div>
