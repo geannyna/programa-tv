@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MovieDetails } from '../interfaces/programa.interface';
 import { Movie, ProgramasResponse } from '../interfaces/programas.interface';
-import { Cast, Credits } from '../interfaces/credits.interface';
+
 
 @Injectable({
   providedIn: 'root'

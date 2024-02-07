@@ -1,10 +1,13 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Movie } from '../../interfaces/programas.interface';
 import { ProgramasService } from '../../services/programas.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
