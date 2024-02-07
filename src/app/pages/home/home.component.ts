@@ -35,17 +35,25 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private programasSvc:ProgramasService ) {}
 
   ngOnInit(): void {
-    
-    this.programasSvc.getProgramas().subscribe(movies=>{
-        
-      this.movies = movies;
-      this.moviesSlideShow = movies;
-      console.log(movies);
+
+    this.programasSvc.getProgramas().subscribe( data => {
+      this.movies=data;
+      console.log(data)
+
     })
+    
+    // this.programasSvc.getProgramas().subscribe(movies=>{
+        
+    //   this.movies = movies;
+    //   this.moviesSlideShow = movies;
+    //   //console.log(movies)
+    // })
   }
 
   ngOnDestroy(){
     this.programasSvc.resetProgramaPage();
   }
-
+verDetalle(id: string){
+  localStorage.setItem("movieId", id);
+  }
 }
