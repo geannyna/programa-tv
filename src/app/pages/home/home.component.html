@@ -1,14 +1,13 @@
-
 <h1>Listado</h1>
 
-<div class="row" *ngIf="movies.length > 0">
-    <div class="col">
-        
-        <!-- <app-slide-show [movies]="moviesSlideShow"></app-slide-show> -->
+<!-- <div class="row" *ngIf="movies && movies.length > 0">
+  <div class="col">
 
-    </div>
+    <app-slide-show [movies]="movies"></app-slide-show>
+
+  </div>
 </div>
-
+ -->
 <h1 class="mt-5">Programas TV</h1>
 
-<!-- <app-programas-poster-grid @If="movies.length > 0" [movies]="movies"></app-programas-poster-grid> -->
+<app-programas-poster-grid [movies]="movies"></app-programas-poster-grid>
