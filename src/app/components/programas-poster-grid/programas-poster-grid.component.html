@@ -1,16 +1,16 @@
 <div class="row">
   <div class="col-md-3 mb-5 animate__animated animate__fadeIn" *ngFor="let movie of movies">
-    <img
-      [src]=" movie.poster_path"
-      class="img-thumbnail img-fluid cursor" (click)="onMovieClick(movie)"
-    />
+    <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" class="img-thumbnail img-fluid cursor"
+      (click)="onMovieClick(movie)" *ngIf="movie.poster_path" [alt]="movie.name" />
+    <img class="img-thumbnail" src="https://placehold.co/510x760" *ngIf="movie.poster_path === null" [alt]="movie.name"
+      (click)="onMovieClick(movie)" />
     <div>
-      <h3 class="mt-2">{{ movie.title }}</h3>
+      <h3 class="mt-2">{{ movie.name }}</h3>
       <div class="row">
         <div class="col-10 text-white">
-           <!-- <ngb-rating style="color: yellow" [rate]="movie.vote_average"></ngb-rating> -->
+          <ngb-rating style="color: black" [rate]="movie.vote_average"></ngb-rating>
         </div>
-        
+
       </div>
     </div>
   </div>

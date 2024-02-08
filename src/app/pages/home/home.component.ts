@@ -1,59 +1,25 @@
-import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Movie } from '../../interfaces/programas.interface';
 import { ProgramasService } from '../../services/programas.service';
-import { CommonModule } from '@angular/common';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
-
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [ CommonModule, NavbarComponent],
+  standalone: false,
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  
-  movies:Movie[] = [];
-  moviesSlideShow:Movie[] = [];
-  @HostListener('window:scroll',['$event'])
-  onScroll(){
-    //console.log('hola')
-
-    const pos = (document.documentElement.scrollTop || document.body.scrollTop)*1300;
-    const max = (document.documentElement.scrollHeight || document.body.scrollHeight);
-    
-    if (pos > max) {
-      if (this.programasSvc.cargando) {return;}
-      this.programasSvc.getProgramas().subscribe(movies=>{
-        this.movies.push(...movies);
-        //console.log(movies)
-      })
-    }
-   
-  }
-  constructor(private programasSvc:ProgramasService ) {}
+export class HomeComponent implements OnInit {
+  movies: Movie[] = [];
+  constructor(private programasSvc: ProgramasService) {}
 
   ngOnInit(): void {
-
-    this.programasSvc.getProgramas().subscribe( data => {
-      this.movies=data;
-      console.log(data)
-
-    })
-    
-    // this.programasSvc.getProgramas().subscribe(movies=>{
-        
-    //   this.movies = movies;
-    //   this.moviesSlideShow = movies;
-    //   //console.log(movies)
-    // })
+    this.programasSvc.getProgramas().subscribe((data) => {
+      this.movies = data;
+      console.log(data);
+    });
   }
 
-  ngOnDestroy(){
-    this.programasSvc.resetProgramaPage();
-  }
-verDetalle(id: string){
-  localStorage.setItem("movieId", id);
+  verDetalle(id: string) {
+    localStorage.setItem('movieId', id);
   }
 }
